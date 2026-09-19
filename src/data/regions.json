@@ -1,0 +1,200 @@
+[
+  {
+    "id": "st-emilion",
+    "name": "St-Émilion",
+    "country": "France",
+    "station": "Saint-Émilion",
+    "lat": 44.8946,
+    "lon": -0.1558,
+    "hemisphere": "NH",
+    "typical_grapes": "Merlot-led Right Bank; Cabernet Franc supporting. Educational note — not a planting census.",
+    "style_note": "Typically Merlot-led Right Bank Bordeaux."
+  },
+  {
+    "id": "pomerol",
+    "name": "Pomerol",
+    "country": "France",
+    "station": "Pomerol / Libourne",
+    "lat": 44.9333,
+    "lon": -0.2,
+    "hemisphere": "NH",
+    "typical_grapes": "Merlot dominant; Cabernet Franc. Educational note — not a planting census.",
+    "style_note": "Typically Merlot-led Right Bank Bordeaux."
+  },
+  {
+    "id": "pauillac",
+    "name": "Médoc / Pauillac",
+    "country": "France",
+    "station": "Pauillac",
+    "lat": 45.1992,
+    "lon": -0.7492,
+    "hemisphere": "NH",
+    "typical_grapes": "Cabernet Sauvignon-led Left Bank; Merlot, Cabernet Franc. Educational note.",
+    "style_note": "Typically Cabernet Sauvignon-led Left Bank Bordeaux."
+  },
+  {
+    "id": "beaune",
+    "name": "Burgundy / Beaune",
+    "country": "France",
+    "station": "Beaune",
+    "lat": 47.026,
+    "lon": 4.84,
+    "hemisphere": "NH",
+    "typical_grapes": "Pinot Noir (red); Chardonnay (white). Educational note.",
+    "style_note": "Cool-climate Pinot Noir and Chardonnay."
+  },
+  {
+    "id": "reims",
+    "name": "Champagne / Reims",
+    "country": "France",
+    "station": "Reims",
+    "lat": 49.2583,
+    "lon": 4.0317,
+    "hemisphere": "NH",
+    "typical_grapes": "Chardonnay, Pinot Noir, Meunier (sparkling). Educational note.",
+    "style_note": "Cool climate; sparkling specialty."
+  },
+  {
+    "id": "tain",
+    "name": "Northern Rhône / Tain",
+    "country": "France",
+    "station": "Tain-l'Hermitage",
+    "lat": 45.0717,
+    "lon": 4.8425,
+    "hemisphere": "NH",
+    "typical_grapes": "Syrah (red); Viognier, Marsanne, Roussanne (white). Educational note.",
+    "style_note": "Syrah-led Northern Rhône."
+  },
+  {
+    "id": "avignon",
+    "name": "Southern Rhône / Avignon",
+    "country": "France",
+    "station": "Avignon",
+    "lat": 43.9493,
+    "lon": 4.8055,
+    "hemisphere": "NH",
+    "typical_grapes": "Grenache-led blends; Syrah, Mourvèdre. Educational note.",
+    "style_note": "Warmer Grenache-led blends."
+  },
+  {
+    "id": "tours",
+    "name": "Loire / Tours",
+    "country": "France",
+    "station": "Tours",
+    "lat": 47.3941,
+    "lon": 0.6848,
+    "hemisphere": "NH",
+    "typical_grapes": "Cabernet Franc, Chenin Blanc, Sauvignon Blanc. Educational note.",
+    "style_note": "Cooler Loire; Cabernet Franc and whites."
+  },
+  {
+    "id": "colmar",
+    "name": "Alsace / Colmar",
+    "country": "France",
+    "station": "Colmar",
+    "lat": 48.0794,
+    "lon": 7.3586,
+    "hemisphere": "NH",
+    "typical_grapes": "Riesling, Gewürztraminer, Pinot Gris, Pinot Noir. Educational note.",
+    "style_note": "Aromatic whites; dry to off-dry."
+  },
+  {
+    "id": "napa",
+    "name": "Napa Valley",
+    "country": "United States",
+    "station": "St. Helena",
+    "lat": 38.5052,
+    "lon": -122.4703,
+    "hemisphere": "NH",
+    "typical_grapes": "Cabernet Sauvignon-led; Merlot, Chardonnay. Educational note — climate twin ≠ same grape/style.",
+    "style_note": "Typically Cabernet Sauvignon-led; often compared to Bordeaux but grape/style differ from Right Bank Merlot."
+  },
+  {
+    "id": "sonoma",
+    "name": "Sonoma",
+    "country": "United States",
+    "station": "Santa Rosa",
+    "lat": 38.4404,
+    "lon": -122.7141,
+    "hemisphere": "NH",
+    "typical_grapes": "Pinot Noir, Chardonnay, Cabernet, Zinfandel (varied AVAs). Educational note.",
+    "style_note": "Diverse AVAs; cooler pockets near coast."
+  },
+  {
+    "id": "paso-robles",
+    "name": "Paso Robles",
+    "country": "United States",
+    "station": "Paso Robles",
+    "lat": 35.6269,
+    "lon": -120.691,
+    "hemisphere": "NH",
+    "typical_grapes": "Cabernet, Rhône varieties, Zinfandel. Educational note.",
+    "style_note": "Warm days, cool nights; bold reds."
+  },
+  {
+    "id": "santa-barbara",
+    "name": "Santa Barbara area",
+    "country": "United States",
+    "station": "Santa Barbara",
+    "lat": 34.4208,
+    "lon": -119.6982,
+    "hemisphere": "NH",
+    "typical_grapes": "Pinot Noir, Chardonnay, Syrah (Santa Ynez / Sta. Rita Hills). Educational note.",
+    "style_note": "Cool-to-moderate coastal influence."
+  },
+  {
+    "id": "willamette",
+    "name": "Willamette Valley",
+    "country": "United States",
+    "station": "McMinnville",
+    "lat": 45.2101,
+    "lon": -123.1987,
+    "hemisphere": "NH",
+    "typical_grapes": "Pinot Noir; Chardonnay, Pinot Gris. Educational note.",
+    "style_note": "Cool-climate Pinot Noir."
+  },
+  {
+    "id": "columbia",
+    "name": "Columbia Valley",
+    "country": "United States",
+    "station": "Richland, WA",
+    "lat": 46.2857,
+    "lon": -119.2845,
+    "hemisphere": "NH",
+    "typical_grapes": "Cabernet Sauvignon, Merlot, Riesling, Syrah. Educational note.",
+    "style_note": "Continental; irrigation-dependent."
+  },
+  {
+    "id": "walla-walla",
+    "name": "Walla Walla",
+    "country": "United States",
+    "station": "Walla Walla",
+    "lat": 46.0646,
+    "lon": -118.343,
+    "hemisphere": "NH",
+    "typical_grapes": "Cabernet, Merlot, Syrah. Educational note.",
+    "style_note": "Columbia Valley AVA; bold reds."
+  },
+  {
+    "id": "finger-lakes",
+    "name": "Finger Lakes",
+    "country": "United States",
+    "station": "Geneva, NY area",
+    "lat": 42.6526,
+    "lon": -76.881,
+    "hemisphere": "NH",
+    "typical_grapes": "Riesling, Cabernet Franc, Pinot Noir, hybrids. Educational note.",
+    "style_note": "Cool, lake-moderated; Riesling strength."
+  },
+  {
+    "id": "bordeaux-city",
+    "name": "Bordeaux (city ref)",
+    "country": "France",
+    "station": "Bordeaux",
+    "lat": 44.8378,
+    "lon": -0.5792,
+    "hemisphere": "NH",
+    "typical_grapes": "Cabernet Sauvignon, Merlot, Cabernet Franc blends. Educational note.",
+    "style_note": "Broad Bordeaux climate reference point."
+  }
+]

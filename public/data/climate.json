@@ -1,0 +1,721 @@
+{
+  "source": "Open-Meteo Historical Weather API (ERA5). Temperatures: same 1991–2020 ERA5 pipeline as french-wine-regions / us-wine-regions. Annual precip for 8 French sites: direct archive fetch (this project). Precip elsewhere and diurnal/GDD pending re-fetch (daily API limit).",
+  "generated_at": "2026-09-19T22:30:24.052930+00:00",
+  "period": {
+    "start": "1991-01-01",
+    "end": "2020-12-31"
+  },
+  "model": "era5",
+  "feature_notes": {
+    "annual_mean_c": "Mean of daily temperature_2m_mean over 1991–2020 (Open-Meteo ERA5)",
+    "growing_season_mean_c": "Mean of daily temperature_2m_mean in GS months (NH Apr–Oct)",
+    "annual_precip_mm": "Mean annual sum of precipitation_sum where fetched; null if pending",
+    "growing_season_precip_mm": "Pending re-fetch",
+    "mean_diurnal_range_c": "Pending re-fetch",
+    "gdd_base10_gs": "Pending re-fetch"
+  },
+  "regions": [
+    {
+      "id": "st-emilion",
+      "name": "St-Émilion",
+      "country": "France",
+      "station": "Saint-Émilion",
+      "hemisphere": "NH",
+      "typical_grapes": "Merlot-led Right Bank; Cabernet Franc supporting. Educational note — not a planting census.",
+      "style_note": "Typically Merlot-led Right Bank Bordeaux.",
+      "requested": {
+        "lat": 44.8946,
+        "lon": -0.1558
+      },
+      "grid": {
+        "latitude": 45,
+        "longitude": -0.25,
+        "elevation_m": 85
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 13.6,
+      "growing_season_mean_c": 17.6,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": 743,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": "open-meteo-archive-fetch-log"
+    },
+    {
+      "id": "pomerol",
+      "name": "Pomerol",
+      "country": "France",
+      "station": "Pomerol / Libourne",
+      "hemisphere": "NH",
+      "typical_grapes": "Merlot dominant; Cabernet Franc. Educational note — not a planting census.",
+      "style_note": "Typically Merlot-led Right Bank Bordeaux.",
+      "requested": {
+        "lat": 44.9333,
+        "lon": -0.2
+      },
+      "grid": {
+        "latitude": 45,
+        "longitude": -0.25,
+        "elevation_m": 32
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 13.9,
+      "growing_season_mean_c": 17.9,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": 743,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": "open-meteo-archive-fetch-log"
+    },
+    {
+      "id": "pauillac",
+      "name": "Médoc / Pauillac",
+      "country": "France",
+      "station": "Pauillac",
+      "hemisphere": "NH",
+      "typical_grapes": "Cabernet Sauvignon-led Left Bank; Merlot, Cabernet Franc. Educational note.",
+      "style_note": "Typically Cabernet Sauvignon-led Left Bank Bordeaux.",
+      "requested": {
+        "lat": 45.1992,
+        "lon": -0.7492
+      },
+      "grid": {
+        "latitude": 45.25,
+        "longitude": -0.75,
+        "elevation_m": 16
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 13.9,
+      "growing_season_mean_c": 17.7,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": 738,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": "open-meteo-archive-fetch-log"
+    },
+    {
+      "id": "beaune",
+      "name": "Burgundy / Beaune",
+      "country": "France",
+      "station": "Beaune",
+      "hemisphere": "NH",
+      "typical_grapes": "Pinot Noir (red); Chardonnay (white). Educational note.",
+      "style_note": "Cool-climate Pinot Noir and Chardonnay.",
+      "requested": {
+        "lat": 47.026,
+        "lon": 4.84
+      },
+      "grid": {
+        "latitude": 47,
+        "longitude": 4.75,
+        "elevation_m": 225
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 12.1,
+      "growing_season_mean_c": 16.7,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": 849,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": "open-meteo-archive-fetch-log"
+    },
+    {
+      "id": "reims",
+      "name": "Champagne / Reims",
+      "country": "France",
+      "station": "Reims",
+      "hemisphere": "NH",
+      "typical_grapes": "Chardonnay, Pinot Noir, Meunier (sparkling). Educational note.",
+      "style_note": "Cool climate; sparkling specialty.",
+      "requested": {
+        "lat": 49.2583,
+        "lon": 4.0317
+      },
+      "grid": {
+        "latitude": 49.25,
+        "longitude": 4,
+        "elevation_m": 94
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 11.3,
+      "growing_season_mean_c": 15.5,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": 727,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": "open-meteo-archive-fetch-log"
+    },
+    {
+      "id": "tain",
+      "name": "Northern Rhône / Tain",
+      "country": "France",
+      "station": "Tain-l'Hermitage",
+      "hemisphere": "NH",
+      "typical_grapes": "Syrah (red); Viognier, Marsanne, Roussanne (white). Educational note.",
+      "style_note": "Syrah-led Northern Rhône.",
+      "requested": {
+        "lat": 45.0717,
+        "lon": 4.8425
+      },
+      "grid": {
+        "latitude": 45.0717,
+        "longitude": 4.8425,
+        "elevation_m": null
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 14.2,
+      "growing_season_mean_c": 18.8,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": 902,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": null,
+      "growing_season_days": null,
+      "years": 30,
+      "precip_source": "open-meteo-archive-fetch-log"
+    },
+    {
+      "id": "avignon",
+      "name": "Southern Rhône / Avignon",
+      "country": "France",
+      "station": "Avignon",
+      "hemisphere": "NH",
+      "typical_grapes": "Grenache-led blends; Syrah, Mourvèdre. Educational note.",
+      "style_note": "Warmer Grenache-led blends.",
+      "requested": {
+        "lat": 43.9493,
+        "lon": 4.8055
+      },
+      "grid": {
+        "latitude": 44,
+        "longitude": 4.75,
+        "elevation_m": 29
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 15.7,
+      "growing_season_mean_c": 20.5,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": 725,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": "open-meteo-archive-fetch-log"
+    },
+    {
+      "id": "tours",
+      "name": "Loire / Tours",
+      "country": "France",
+      "station": "Tours",
+      "hemisphere": "NH",
+      "typical_grapes": "Cabernet Franc, Chenin Blanc, Sauvignon Blanc. Educational note.",
+      "style_note": "Cooler Loire; Cabernet Franc and whites.",
+      "requested": {
+        "lat": 47.3941,
+        "lon": 0.6848
+      },
+      "grid": {
+        "latitude": 47.5,
+        "longitude": 0.75,
+        "elevation_m": 58
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 12.4,
+      "growing_season_mean_c": 16.4,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": 678,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": "open-meteo-archive-fetch-log"
+    },
+    {
+      "id": "colmar",
+      "name": "Alsace / Colmar",
+      "country": "France",
+      "station": "Colmar",
+      "hemisphere": "NH",
+      "typical_grapes": "Riesling, Gewürztraminer, Pinot Gris, Pinot Noir. Educational note.",
+      "style_note": "Aromatic whites; dry to off-dry.",
+      "requested": {
+        "lat": 48.0794,
+        "lon": 7.3586
+      },
+      "grid": {
+        "latitude": 48,
+        "longitude": 7.25,
+        "elevation_m": 196
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 11.6,
+      "growing_season_mean_c": 16.3,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "napa",
+      "name": "Napa Valley",
+      "country": "United States",
+      "station": "St. Helena",
+      "hemisphere": "NH",
+      "typical_grapes": "Cabernet Sauvignon-led; Merlot, Chardonnay. Educational note — climate twin ≠ same grape/style.",
+      "style_note": "Typically Cabernet Sauvignon-led; often compared to Bordeaux but grape/style differ from Right Bank Merlot.",
+      "requested": {
+        "lat": 38.5052,
+        "lon": -122.4703
+      },
+      "grid": {
+        "latitude": 38.5,
+        "longitude": -122.5,
+        "elevation_m": 82
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 16.5,
+      "growing_season_mean_c": 20.1,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "sonoma",
+      "name": "Sonoma",
+      "country": "United States",
+      "station": "Santa Rosa",
+      "hemisphere": "NH",
+      "typical_grapes": "Pinot Noir, Chardonnay, Cabernet, Zinfandel (varied AVAs). Educational note.",
+      "style_note": "Diverse AVAs; cooler pockets near coast.",
+      "requested": {
+        "lat": 38.4404,
+        "lon": -122.7141
+      },
+      "grid": {
+        "latitude": 38.5,
+        "longitude": -122.75,
+        "elevation_m": 54
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 15.9,
+      "growing_season_mean_c": 19.2,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "paso-robles",
+      "name": "Paso Robles",
+      "country": "United States",
+      "station": "Paso Robles",
+      "hemisphere": "NH",
+      "typical_grapes": "Cabernet, Rhône varieties, Zinfandel. Educational note.",
+      "style_note": "Warm days, cool nights; bold reds.",
+      "requested": {
+        "lat": 35.6269,
+        "lon": -120.691
+      },
+      "grid": {
+        "latitude": 35.75,
+        "longitude": -120.75,
+        "elevation_m": 229
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 16.4,
+      "growing_season_mean_c": 19.9,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "santa-barbara",
+      "name": "Santa Barbara area",
+      "country": "United States",
+      "station": "Santa Barbara",
+      "hemisphere": "NH",
+      "typical_grapes": "Pinot Noir, Chardonnay, Syrah (Santa Ynez / Sta. Rita Hills). Educational note.",
+      "style_note": "Cool-to-moderate coastal influence.",
+      "requested": {
+        "lat": 34.4208,
+        "lon": -119.6982
+      },
+      "grid": {
+        "latitude": 34.5,
+        "longitude": -119.75,
+        "elevation_m": 14
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 18.8,
+      "growing_season_mean_c": 21.5,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "willamette",
+      "name": "Willamette Valley",
+      "country": "United States",
+      "station": "McMinnville",
+      "hemisphere": "NH",
+      "typical_grapes": "Pinot Noir; Chardonnay, Pinot Gris. Educational note.",
+      "style_note": "Cool-climate Pinot Noir.",
+      "requested": {
+        "lat": 45.2101,
+        "lon": -123.1987
+      },
+      "grid": {
+        "latitude": 45.25,
+        "longitude": -123.25,
+        "elevation_m": 46
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 12.3,
+      "growing_season_mean_c": 16.1,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "columbia",
+      "name": "Columbia Valley",
+      "country": "United States",
+      "station": "Richland, WA",
+      "hemisphere": "NH",
+      "typical_grapes": "Cabernet Sauvignon, Merlot, Riesling, Syrah. Educational note.",
+      "style_note": "Continental; irrigation-dependent.",
+      "requested": {
+        "lat": 46.2857,
+        "lon": -119.2845
+      },
+      "grid": {
+        "latitude": 46,
+        "longitude": -118.25,
+        "elevation_m": 288
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 13.1,
+      "growing_season_mean_c": 18.4,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "walla-walla",
+      "name": "Walla Walla",
+      "country": "United States",
+      "station": "Walla Walla",
+      "hemisphere": "NH",
+      "typical_grapes": "Cabernet, Merlot, Syrah. Educational note.",
+      "style_note": "Columbia Valley AVA; bold reds.",
+      "requested": {
+        "lat": 46.0646,
+        "lon": -118.343
+      },
+      "grid": {
+        "latitude": 46,
+        "longitude": -118.25,
+        "elevation_m": 288
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 13.1,
+      "growing_season_mean_c": 18.4,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "finger-lakes",
+      "name": "Finger Lakes",
+      "country": "United States",
+      "station": "Geneva, NY area",
+      "hemisphere": "NH",
+      "typical_grapes": "Riesling, Cabernet Franc, Pinot Noir, hybrids. Educational note.",
+      "style_note": "Cool, lake-moderated; Riesling strength.",
+      "requested": {
+        "lat": 42.6526,
+        "lon": -76.881
+      },
+      "grid": {
+        "latitude": 42.75,
+        "longitude": -77,
+        "elevation_m": 150
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 10.1,
+      "growing_season_mean_c": 16.7,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    },
+    {
+      "id": "bordeaux-city",
+      "name": "Bordeaux (city ref)",
+      "country": "France",
+      "station": "Bordeaux",
+      "hemisphere": "NH",
+      "typical_grapes": "Cabernet Sauvignon, Merlot, Cabernet Franc blends. Educational note.",
+      "style_note": "Broad Bordeaux climate reference point.",
+      "requested": {
+        "lat": 44.8378,
+        "lon": -0.5792
+      },
+      "grid": {
+        "latitude": 44.75,
+        "longitude": -0.5,
+        "elevation_m": 16
+      },
+      "period": {
+        "start": "1991-01-01",
+        "end": "2020-12-31"
+      },
+      "model": "era5",
+      "units": {
+        "temp": "°C",
+        "precip": "mm",
+        "gdd": "°C·days base 10"
+      },
+      "annual_mean_c": 14.1,
+      "growing_season_mean_c": 18.1,
+      "growing_season_months": "Apr–Oct",
+      "annual_precip_mm": null,
+      "growing_season_precip_mm": null,
+      "mean_diurnal_range_c": null,
+      "gdd_base10_gs": null,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30,
+      "precip_source": null
+    }
+  ]
+}
