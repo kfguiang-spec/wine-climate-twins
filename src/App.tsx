@@ -79,6 +79,27 @@ export default function App() {
   }, [])
 
   const regions = climate?.regions ?? []
+  const enrichedCount = regions.filter(
+    (r) =>
+      r.annual_precip_mm != null &&
+      r.gdd_base10_gs != null &&
+      r.mean_diurnal_range_c != null &&
+      r.heat_days_tmax30_gs != null &&
+      r.frost_days_tmin0_year != null &&
+      r.winkler_region != null &&
+      r.huglin_index != null &&
+      r.grid?.elevation_m != null,
+  ).length
+  const pendingIds = regions
+    .filter(
+      (r) =>
+        !(
+          r.annual_precip_mm != null &&
+          r.gdd_base10_gs != null &&
+          r.mean_diurnal_range_c != null
+        ),
+    )
+    .map((r) => r.id)
   const ref = regions.find((r) => r.id === refId) ?? null
 
   const twins = useMemo(() => {
@@ -497,7 +518,11 @@ export default function App() {
         Σ max(0, Tmean−10°C) in GS; diurnal = mean(tmax−tmin) in GS; heat days = GS days
         tmax≥30°C/yr; frost days = year days tmin≤0°C/yr; Winkler from GDD °C bands; Huglin =
         lat-adjusted Apr–Sep (NH) heat sum. Features never invented — archive daily fields only.
-        Caveat: climate twin ≠ grape or style match; reanalysis ≠ vineyard microclimate. Enrichment: 16/18 regions full; Finger Lakes & Bordeaux city still temps-only pending API quota resume.
+        Caveat: climate twin ≠ grape or style match; reanalysis ≠ vineyard microclimate. Enrichment:{' '}
+        {enrichedCount}/{regions.length} regions full
+        {pendingIds.length
+          ? `; pending API resume: ${pendingIds.join(', ')}`
+          : '.'}
       </footer>
     </div>
   )

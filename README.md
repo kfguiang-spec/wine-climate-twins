@@ -26,17 +26,15 @@ Related: [French wine regions](https://kfguiang-spec.github.io/french-wine-regio
 | Huglin index | Σ `((max(0,Tmean−10)+max(0,Tmax−10))/2)×K` over Apr–Sep (NH) / Oct–Mar (SH); `K = 1 + 0.006×clamp(\|lat\|−40, 0, 10)` |
 | Elevation + lat/lon | Open-Meteo archive response grid + requested coords |
 
+## Coverage (2026-09-20)
 
-## Enrichment coverage (2026-09-20)
+**32 / 33 regions** have the full ERA5 feature set (rain + GDD + diurnal + heat/frost + Winkler/Huglin + elevation). Catalog spans France, Italy, Spain, Portugal, Germany, United States, Argentina, South Africa, New Zealand, and Australia.
 
-**16 / 18 regions** have full rain + GDD + diurnal + heat/frost + Winkler/Huglin + elevation from Open-Meteo ERA5 archive (1991–2020).
+**Pending** (Open-Meteo daily quota; re-run `npm run fetch:climate` tomorrow to resume — resume-friendly, will not wipe complete rows):
 
-**Still pending** (temps only — Open-Meteo hourly/daily quota blocked mid-run; re-run `npm run fetch:climate` to resume):
+- Coonawarra (`coonawarra`) — listed in `src/data/regions.json`
 
-- Finger Lakes (`finger-lakes`)
-- Bordeaux city ref (`bordeaux-city`)
-
-Incomplete rows stay in the dataset for map/select, but twin ranking skips them when the reference is fully enriched (avoids temp-only false neighbours).
+Backfilled this run: Finger Lakes, Bordeaux city ref.
 
 ## Similarity
 
@@ -50,7 +48,7 @@ Z-scored Euclidean distance on available features. User sliders weight three gro
 
 ```bash
 npm install
-npm run fetch:climate   # Open-Meteo archive; resumes incomplete rows; ~12s between batches
+npm run fetch:climate   # Open-Meteo archive; resumes incomplete rows; spaced + 429 retry
 npm run dev
 npm run build:pages
 node scripts/deploy-pages.mjs

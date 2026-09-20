@@ -99,6 +99,116 @@
     "style_note": "Aromatic whites; dry to off-dry."
   },
   {
+    "id": "bordeaux-city",
+    "name": "Bordeaux (city ref)",
+    "country": "France",
+    "station": "Bordeaux",
+    "lat": 44.8378,
+    "lon": -0.5792,
+    "hemisphere": "NH",
+    "typical_grapes": "Cabernet Sauvignon, Merlot, Cabernet Franc blends. Educational note.",
+    "style_note": "Broad Bordeaux climate reference point."
+  },
+  {
+    "id": "tuscany",
+    "name": "Tuscany / Siena",
+    "country": "Italy",
+    "station": "Siena",
+    "lat": 43.3188,
+    "lon": 11.3308,
+    "hemisphere": "NH",
+    "typical_grapes": "Sangiovese-led (Chianti / Brunello nearby); Canaiolo, Colorino, Merlot. Educational note.",
+    "style_note": "Central Tuscany; Sangiovese heartland."
+  },
+  {
+    "id": "piedmont",
+    "name": "Piedmont / Alba",
+    "country": "Italy",
+    "station": "Alba",
+    "lat": 44.7009,
+    "lon": 8.0353,
+    "hemisphere": "NH",
+    "typical_grapes": "Nebbiolo (Barolo/Barbaresco); Barbera, Dolcetto, Moscato. Educational note.",
+    "style_note": "Langhe; Nebbiolo and crisp reds."
+  },
+  {
+    "id": "etna",
+    "name": "Etna",
+    "country": "Italy",
+    "station": "Randazzo (Etna north)",
+    "lat": 37.877,
+    "lon": 14.95,
+    "hemisphere": "NH",
+    "typical_grapes": "Nerello Mascalese, Nerello Cappuccio; Carricante (white). Educational note.",
+    "style_note": "Volcanic high-elevation Etna DOC."
+  },
+  {
+    "id": "rioja",
+    "name": "Rioja",
+    "country": "Spain",
+    "station": "Logroño",
+    "lat": 42.4627,
+    "lon": -2.4449,
+    "hemisphere": "NH",
+    "typical_grapes": "Tempranillo-led; Garnacha, Graciano, Mazuelo. Educational note.",
+    "style_note": "Classic Rioja; Tempranillo blends."
+  },
+  {
+    "id": "ribera-del-duero",
+    "name": "Ribera del Duero",
+    "country": "Spain",
+    "station": "Aranda de Duero",
+    "lat": 41.6704,
+    "lon": -3.6892,
+    "hemisphere": "NH",
+    "typical_grapes": "Tempranillo (Tinto Fino); Cabernet, Merlot allowed. Educational note.",
+    "style_note": "High plateau; bold Tempranillo."
+  },
+  {
+    "id": "priorat",
+    "name": "Priorat",
+    "country": "Spain",
+    "station": "Falset",
+    "lat": 41.146,
+    "lon": 0.8203,
+    "hemisphere": "NH",
+    "typical_grapes": "Garnacha, Cariñena; Cabernet, Syrah in blends. Educational note.",
+    "style_note": "Steep llicorella slopes; powerful reds."
+  },
+  {
+    "id": "douro",
+    "name": "Douro",
+    "country": "Portugal",
+    "station": "Pinhão",
+    "lat": 41.191,
+    "lon": -7.545,
+    "hemisphere": "NH",
+    "typical_grapes": "Touriga Nacional, Touriga Franca, Tinta Roriz (Port & dry reds). Educational note.",
+    "style_note": "Douuro Valley; Port and dry table wines."
+  },
+  {
+    "id": "mosel",
+    "name": "Mosel",
+    "country": "Germany",
+    "station": "Bernkastel-Kues",
+    "lat": 49.9161,
+    "lon": 7.0764,
+    "hemisphere": "NH",
+    "typical_grapes": "Riesling dominant; some Müller-Thurgau, Pinot Blanc. Educational note.",
+    "style_note": "Cool steep slate; Riesling specialty."
+  },
+  {
+    "id": "rheingau",
+    "name": "Rheingau",
+    "country": "Germany",
+    "station": "Geisenheim",
+    "lat": 49.9844,
+    "lon": 7.9683,
+    "hemisphere": "NH",
+    "typical_grapes": "Riesling; Spätburgunder (Pinot Noir). Educational note.",
+    "style_note": "Rhine-facing slopes; classic Riesling."
+  },
+  {
     "id": "napa",
     "name": "Napa Valley",
     "country": "United States",
@@ -187,14 +297,69 @@
     "style_note": "Cool, lake-moderated; Riesling strength."
   },
   {
-    "id": "bordeaux-city",
-    "name": "Bordeaux (city ref)",
-    "country": "France",
-    "station": "Bordeaux",
-    "lat": 44.8378,
-    "lon": -0.5792,
-    "hemisphere": "NH",
-    "typical_grapes": "Cabernet Sauvignon, Merlot, Cabernet Franc blends. Educational note.",
-    "style_note": "Broad Bordeaux climate reference point."
+    "id": "mendoza",
+    "name": "Mendoza",
+    "country": "Argentina",
+    "station": "Luján de Cuyo",
+    "lat": -33.038,
+    "lon": -68.879,
+    "hemisphere": "SH",
+    "typical_grapes": "Malbec-led; Cabernet Sauvignon, Bonarda, Torrontés. Educational note.",
+    "style_note": "High-elevation Andes foothills; Malbec."
+  },
+  {
+    "id": "stellenbosch",
+    "name": "Stellenbosch",
+    "country": "South Africa",
+    "station": "Stellenbosch",
+    "lat": -33.9321,
+    "lon": 18.8602,
+    "hemisphere": "SH",
+    "typical_grapes": "Cabernet Sauvignon, Merlot, Chenin Blanc, Pinotage, Syrah. Educational note.",
+    "style_note": "Cape Winelands; Bordeaux blends and Chenin."
+  },
+  {
+    "id": "marlborough",
+    "name": "Marlborough",
+    "country": "New Zealand",
+    "station": "Blenheim",
+    "lat": -41.511,
+    "lon": 173.954,
+    "hemisphere": "SH",
+    "typical_grapes": "Sauvignon Blanc dominant; Pinot Noir, Chardonnay, Pinot Gris. Educational note.",
+    "style_note": "Cool maritime; iconic Sauvignon Blanc."
+  },
+  {
+    "id": "central-otago",
+    "name": "Central Otago",
+    "country": "New Zealand",
+    "station": "Cromwell",
+    "lat": -45.039,
+    "lon": 169.194,
+    "hemisphere": "SH",
+    "typical_grapes": "Pinot Noir dominant; Riesling, Pinot Gris, Chardonnay. Educational note.",
+    "style_note": "Continental high country; Pinot Noir."
+  },
+  {
+    "id": "barossa",
+    "name": "Barossa",
+    "country": "Australia",
+    "station": "Tanunda",
+    "lat": -34.5235,
+    "lon": 138.9598,
+    "hemisphere": "SH",
+    "typical_grapes": "Shiraz (Syrah); Cabernet Sauvignon, Grenache, Mataro. Educational note.",
+    "style_note": "Warm valley; full-bodied Shiraz."
+  },
+  {
+    "id": "coonawarra",
+    "name": "Coonawarra",
+    "country": "Australia",
+    "station": "Penola",
+    "lat": -37.377,
+    "lon": 140.8367,
+    "hemisphere": "SH",
+    "typical_grapes": "Cabernet Sauvignon-led; Shiraz, Merlot. Educational note.",
+    "style_note": "Terra rossa strip; Cabernet specialty."
   }
 ]
