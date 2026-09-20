@@ -17,6 +17,38 @@ const RELATED = [
   { href: 'https://kfguiang-spec.github.io/wset-tasting-guide/', label: 'WSET tasting guide' },
 ]
 
+function fmtNum(v: number | null | undefined, digits = 1): string {
+  if (v == null || Number.isNaN(v)) return '—'
+  return v.toFixed(digits)
+}
+
+function fmtDelta(v: number | null | undefined, digits = 1): string {
+  if (v == null || Number.isNaN(v)) return '—'
+  const sign = v > 0 ? '+' : ''
+  return `${sign}${v.toFixed(digits)}`
+}
+
+function ClimateBadges({ region }: { region: ClimateRegion }) {
+  return (
+    <span className="badge-row" aria-label="Climate indices">
+      {region.winkler_region ? (
+        <span className="badge winkler" title={`Winkler from GDD base 10°C (${region.winkler_gdd_c ?? region.gdd_base10_gs} °C·days)`}>
+          Winkler {region.winkler_region}
+        </span>
+      ) : null}
+      {region.huglin_index != null ? (
+        <span
+          className="badge huglin"
+          title={`Huglin index ${region.huglin_index} (${region.huglin_band ?? ''}); K=${region.huglin_k ?? '—'}`}
+        >
+          Huglin {region.huglin_index}
+          {region.huglin_band ? ` · ${region.huglin_band}` : ''}
+        </span>
+      ) : null}
+    </span>
+  )
+}
+
 export default function App() {
   const [climate, setClimate] = useState<ClimateFile | null>(null)
   const [loadError, setLoadError] = useState<string | null>(null)
@@ -24,7 +56,8 @@ export default function App() {
   const [refId, setRefId] = useState('st-emilion')
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [tempWeight, setTempWeight] = useState(1.2)
-  const [precipWeight, setPrecipWeight] = useState(1)
+  const [rainWeight, setRainWeight] = useState(1)
+  const [heatWeight, setHeatWeight] = useState(1)
   const [tempUnit, setTempUnit] = useState<TempUnit>('F')
   const [precipUnit, setPrecipUnit] = useState<PrecipUnit>('mm')
 
@@ -50,8 +83,8 @@ export default function App() {
 
   const twins = useMemo(() => {
     if (!regions.length) return []
-    return rankTwins(regions, refId, tempWeight, precipWeight)
-  }, [regions, refId, tempWeight, precipWeight])
+    return rankTwins(regions, refId, tempWeight, rainWeight, heatWeight)
+  }, [regions, refId, tempWeight, rainWeight, heatWeight])
 
   useEffect(() => {
     if (twins.length && (!selectedId || selectedId === refId)) {
@@ -87,15 +120,16 @@ export default function App() {
           <h1>Wine climate twins</h1>
           <p className="tagline">
             Like-for-like climate analogues from Open-Meteo ERA5 (1991–2020). Pick a reference
-            region — find comparable climates worldwide by temperature and rainfall.
+            region — rank peers by temperature, rainfall, and heat/seasonality (GDD, diurnal
+            range, extremes). No LLM at runtime; metrics are precomputed static JSON.
           </p>
         </div>
         <p className="caveat">
           <strong>Style ≠ climate.</strong> St-Émilion and Pomerol are typically Merlot-led Right
           Bank Bordeaux; Napa Cab is Cabernet Sauvignon. Climate similarity is useful for
-          scouting — it does not mean the same grape or wine style. Annual precip is filled for
-          eight French sites from a direct archive fetch; other sites show temps only until
-          Open-Meteo daily quota resets (never invented).
+          scouting — it does not mean the same grape or wine style. ERA5 grid cells are ~0.25°;
+          elevation is the Open-Meteo returned grid elevation, not a vineyard DEM. Winkler/Huglin
+          are classical heat-sum indices from the same daily series (see footer / README).
         </p>
         <nav className="nav-links" aria-label="Related projects">
           {RELATED.map((l) => (
@@ -122,6 +156,9 @@ export default function App() {
               >
                 {groupOptions(regions)}
               </select>
+              <div style={{ marginTop: '0.4rem' }}>
+                <ClimateBadges region={ref} />
+              </div>
             </div>
 
             <div className="control-block">
@@ -138,22 +175,41 @@ export default function App() {
                 />
                 <span className="slider-val">{tempWeight.toFixed(1)}</span>
               </div>
+              <p className="muted small">Annual + growing-season mean °C</p>
             </div>
 
             <div className="control-block">
-              <label htmlFor="precip-w">Rainfall weight</label>
+              <label htmlFor="rain-w">Rain weight</label>
               <div className="slider-row">
                 <input
-                  id="precip-w"
+                  id="rain-w"
                   type="range"
                   min={0.2}
                   max={2}
                   step={0.1}
-                  value={precipWeight}
-                  onChange={(e) => setPrecipWeight(Number(e.target.value))}
+                  value={rainWeight}
+                  onChange={(e) => setRainWeight(Number(e.target.value))}
                 />
-                <span className="slider-val">{precipWeight.toFixed(1)}</span>
+                <span className="slider-val">{rainWeight.toFixed(1)}</span>
               </div>
+              <p className="muted small">Annual + growing-season precip mm</p>
+            </div>
+
+            <div className="control-block">
+              <label htmlFor="heat-w">Heat / seasonality weight</label>
+              <div className="slider-row">
+                <input
+                  id="heat-w"
+                  type="range"
+                  min={0.2}
+                  max={2}
+                  step={0.1}
+                  value={heatWeight}
+                  onChange={(e) => setHeatWeight(Number(e.target.value))}
+                />
+                <span className="slider-val">{heatWeight.toFixed(1)}</span>
+              </div>
+              <p className="muted small">GDD + diurnal range + heat/frost days</p>
             </div>
 
             <div className="control-block">
@@ -193,7 +249,7 @@ export default function App() {
 
           <h3 style={{ marginTop: 0 }}>Nearest climate twins</h3>
           <p className="muted" style={{ marginTop: 0 }}>
-            Ranked by weighted z-scored distance. Temps always used; precip only when both sites have real Open-Meteo precip. Lower = closer.
+            Ranked by weighted z-scored distance on available features. Lower = closer.
           </p>
           <ol className="twin-list">
             {twins.map((t, i) => (
@@ -209,6 +265,7 @@ export default function App() {
                     {t.region.country} · dist {t.distance.toFixed(2)} · GS{' '}
                     {formatTemp(t.region.growing_season_mean_c, tempUnit)} ·{' '}
                     {formatPrecip(t.region.annual_precip_mm, precipUnit)}
+                    {t.region.winkler_region ? ` · W${t.region.winkler_region}` : ''}
                   </span>
                 </button>
               </li>
@@ -222,11 +279,25 @@ export default function App() {
             {selected ? ` → ${selected.name}` : ''}
           </h2>
           <p className="muted">
-            Reference station: {ref.station} ({ref.requested.lat.toFixed(2)},{' '}
-            {ref.requested.lon.toFixed(2)}). Growing season {ref.growing_season_months}. Model:{' '}
-            {climate.model.toUpperCase()} {climate.period.start.slice(0, 4)}–
-            {climate.period.end.slice(0, 4)}.
+            Reference: {ref.station} ({ref.requested.lat.toFixed(2)},{' '}
+            {ref.requested.lon.toFixed(2)})
+            {ref.grid.elevation_m != null
+              ? ` · elev ${Math.round(ref.grid.elevation_m)} m`
+              : ''}
+            . Grid {ref.grid.latitude.toFixed(2)}, {ref.grid.longitude.toFixed(2)}. Growing season{' '}
+            {ref.growing_season_months}. Model: {climate.model.toUpperCase()}{' '}
+            {climate.period.start.slice(0, 4)}–{climate.period.end.slice(0, 4)}.
           </p>
+          <div className="badge-compare">
+            <div>
+              <strong>{ref.name}</strong> <ClimateBadges region={ref} />
+            </div>
+            {selected ? (
+              <div>
+                <strong>{selected.name}</strong> <ClimateBadges region={selected} />
+              </div>
+            ) : null}
+          </div>
 
           {selected && selectedTwin && (
             <>
@@ -286,7 +357,7 @@ export default function App() {
                       </td>
                     </tr>
                     <tr>
-                      <td>Mean diurnal range (tmax−tmin)</td>
+                      <td>Mean diurnal range (GS, tmax−tmin)</td>
                       <td className="num">{formatTemp(ref.mean_diurnal_range_c, tempUnit)}</td>
                       <td className="num">
                         {formatTemp(selected.mean_diurnal_range_c, tempUnit)}
@@ -297,8 +368,14 @@ export default function App() {
                     </tr>
                     <tr>
                       <td>GDD base 10°C (growing season)</td>
-                      <td className="num">{ref.gdd_base10_gs == null ? '—' : Math.round(ref.gdd_base10_gs)}</td>
-                      <td className="num">{selected.gdd_base10_gs == null ? '—' : Math.round(selected.gdd_base10_gs)}</td>
+                      <td className="num">
+                        {ref.gdd_base10_gs == null ? '—' : Math.round(ref.gdd_base10_gs)}
+                      </td>
+                      <td className="num">
+                        {selected.gdd_base10_gs == null
+                          ? '—'
+                          : Math.round(selected.gdd_base10_gs)}
+                      </td>
                       <td className="num">
                         {selectedTwin.deltas.gdd_base10_gs == null
                           ? '—'
@@ -306,9 +383,69 @@ export default function App() {
                       </td>
                     </tr>
                     <tr>
+                      <td>Heat days (GS days tmax ≥ 30°C / yr)</td>
+                      <td className="num">{fmtNum(ref.heat_days_tmax30_gs, 1)}</td>
+                      <td className="num">{fmtNum(selected.heat_days_tmax30_gs, 1)}</td>
+                      <td className="num">{fmtDelta(selectedTwin.deltas.heat_days_tmax30_gs, 1)}</td>
+                    </tr>
+                    <tr>
+                      <td>Frost days (year days tmin ≤ 0°C / yr)</td>
+                      <td className="num">{fmtNum(ref.frost_days_tmin0_year, 1)}</td>
+                      <td className="num">{fmtNum(selected.frost_days_tmin0_year, 1)}</td>
+                      <td className="num">
+                        {fmtDelta(selectedTwin.deltas.frost_days_tmin0_year, 1)}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Huglin index</td>
+                      <td className="num">
+                        {ref.huglin_index == null
+                          ? '—'
+                          : `${Math.round(ref.huglin_index)}${ref.huglin_band ? ` (${ref.huglin_band})` : ''}`}
+                      </td>
+                      <td className="num">
+                        {selected.huglin_index == null
+                          ? '—'
+                          : `${Math.round(selected.huglin_index)}${selected.huglin_band ? ` (${selected.huglin_band})` : ''}`}
+                      </td>
+                      <td className="num">
+                        {selectedTwin.deltas.huglin_index == null
+                          ? '—'
+                          : `${selectedTwin.deltas.huglin_index > 0 ? '+' : ''}${Math.round(selectedTwin.deltas.huglin_index)}`}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Winkler region</td>
+                      <td className="num">{ref.winkler_region ?? '—'}</td>
+                      <td className="num">{selected.winkler_region ?? '—'}</td>
+                      <td className="num">—</td>
+                    </tr>
+                    <tr>
                       <td>Elevation (grid)</td>
-                      <td className="num">{ref.grid.elevation_m == null ? '—' : `${Math.round(ref.grid.elevation_m)} m`}</td>
-                      <td className="num">{selected.grid.elevation_m == null ? '—' : `${Math.round(selected.grid.elevation_m)} m`}</td>
+                      <td className="num">
+                        {ref.grid.elevation_m == null
+                          ? '—'
+                          : `${Math.round(ref.grid.elevation_m)} m`}
+                      </td>
+                      <td className="num">
+                        {selected.grid.elevation_m == null
+                          ? '—'
+                          : `${Math.round(selected.grid.elevation_m)} m`}
+                      </td>
+                      <td className="num">
+                        {ref.grid.elevation_m != null && selected.grid.elevation_m != null
+                          ? `${selected.grid.elevation_m - ref.grid.elevation_m > 0 ? '+' : ''}${Math.round(selected.grid.elevation_m - ref.grid.elevation_m)} m`
+                          : '—'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Lat / lon (requested)</td>
+                      <td className="num">
+                        {ref.requested.lat.toFixed(2)}, {ref.requested.lon.toFixed(2)}
+                      </td>
+                      <td className="num">
+                        {selected.requested.lat.toFixed(2)}, {selected.requested.lon.toFixed(2)}
+                      </td>
                       <td className="num">—</td>
                     </tr>
                     <tr>
@@ -335,7 +472,7 @@ export default function App() {
             </>
           )}
 
-          <h3>Scatter: GS temp vs precip (or annual temp)</h3>
+          <h3>Scatter: GS temp vs precip</h3>
           <ScatterPlot
             regions={regions}
             referenceId={refId}
@@ -356,8 +493,11 @@ export default function App() {
         <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">
           Open-Meteo
         </a>{' '}
-        (ERA5). Generated {new Date(climate.generated_at).toLocaleDateString('en-US')}. Features
-        never invented — pre-fetched archive daily fields only.
+        (ERA5). Generated {new Date(climate.generated_at).toLocaleDateString('en-US')}. GDD =
+        Σ max(0, Tmean−10°C) in GS; diurnal = mean(tmax−tmin) in GS; heat days = GS days
+        tmax≥30°C/yr; frost days = year days tmin≤0°C/yr; Winkler from GDD °C bands; Huglin =
+        lat-adjusted Apr–Sep (NH) heat sum. Features never invented — archive daily fields only.
+        Caveat: climate twin ≠ grape or style match; reanalysis ≠ vineyard microclimate. Enrichment: 16/18 regions full; Finger Lakes & Bordeaux city still temps-only pending API quota resume.
       </footer>
     </div>
   )
@@ -400,8 +540,11 @@ function NapaNote({
       {t.deltas.growing_season_mean_c > 0 ? '+' : ''}
       {t.deltas.growing_season_mean_c.toFixed(1)}°C
       {t.deltas.annual_precip_mm == null
-        ? ' (Napa precip pending re-fetch).'
-        : `; annual precip Δ ${t.deltas.annual_precip_mm > 0 ? '+' : ''}${Math.round(t.deltas.annual_precip_mm)} mm.`}{' '}
+        ? '.'
+        : `; annual precip Δ ${t.deltas.annual_precip_mm > 0 ? '+' : ''}${Math.round(t.deltas.annual_precip_mm)} mm`}
+      {t.deltas.gdd_base10_gs == null
+        ? '.'
+        : `; GDD Δ ${t.deltas.gdd_base10_gs > 0 ? '+' : ''}${Math.round(t.deltas.gdd_base10_gs)}.`}{' '}
       Marketing “Napa Cab ≈ Right Bank” is not a climate identity.
     </p>
   )

@@ -1,18 +1,23 @@
 {
-  "source": "Open-Meteo Historical Weather API (ERA5). Temperatures: same 1991–2020 ERA5 pipeline as french-wine-regions / us-wine-regions. Annual precip for 8 French sites: direct archive fetch (this project). Precip elsewhere and diurnal/GDD pending re-fetch (daily API limit).",
-  "generated_at": "2026-09-19T22:30:24.052930+00:00",
+  "source": "Open-Meteo Historical Weather API (ERA5 reanalysis). Daily temperature_2m_mean/max/min and precipitation_sum, 1991–2020.",
+  "generated_at": "2026-09-20T00:15:20.786Z",
   "period": {
     "start": "1991-01-01",
     "end": "2020-12-31"
   },
   "model": "era5",
   "feature_notes": {
-    "annual_mean_c": "Mean of daily temperature_2m_mean over 1991–2020 (Open-Meteo ERA5)",
-    "growing_season_mean_c": "Mean of daily temperature_2m_mean in GS months (NH Apr–Oct)",
-    "annual_precip_mm": "Mean annual sum of precipitation_sum where fetched; null if pending",
-    "growing_season_precip_mm": "Pending re-fetch",
-    "mean_diurnal_range_c": "Pending re-fetch",
-    "gdd_base10_gs": "Pending re-fetch"
+    "annual_mean_c": "Mean of daily temperature_2m_mean over full years",
+    "growing_season_mean_c": "Mean of daily temperature_2m_mean in GS months (NH Apr–Oct; SH Oct–Apr)",
+    "annual_precip_mm": "Mean annual sum of precipitation_sum",
+    "growing_season_precip_mm": "Mean annual sum of precipitation_sum in GS months",
+    "mean_diurnal_range_c": "Mean of (temperature_2m_max − temperature_2m_min) over GS days only",
+    "gdd_base10_gs": "Mean annual growing-degree days: Σ max(0, daily mean − 10°C) in GS months",
+    "heat_days_tmax30_gs": "Mean annual count of growing-season days with tmax ≥ 30°C",
+    "frost_days_tmin0_year": "Mean annual count of calendar-year days with tmin ≤ 0°C",
+    "winkler_region": "Winkler I–V from gdd_base10_gs (°C): I<1390, II<1670, III<1940, IV<2220, V≥2220",
+    "huglin_index": "Mean annual Huglin: Σ ((max(0,Tmean−10)+max(0,Tmax−10))/2)×K over Apr–Sep (NH) / Oct–Mar (SH); K=1+0.006×clamp(|lat|−40,0,10)",
+    "elevation_m": "Open-Meteo archive response elevation (m) for returned grid cell"
   },
   "regions": [
     {
@@ -30,7 +35,7 @@
       "grid": {
         "latitude": 45,
         "longitude": -0.25,
-        "elevation_m": 85
+        "elevation_m": 84
       },
       "period": {
         "start": "1991-01-01",
@@ -40,19 +45,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 13.6,
       "growing_season_mean_c": 17.6,
       "growing_season_months": "Apr–Oct",
       "annual_precip_mm": 743,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "growing_season_precip_mm": 424,
+      "mean_diurnal_range_c": 10.1,
+      "gdd_base10_gs": 1636,
+      "heat_days_tmax30_gs": 21.2,
+      "frost_days_tmin0_year": 25.9,
+      "winkler_region": "II",
+      "winkler_gdd_c": 1636,
+      "huglin_index": 2026,
+      "huglin_band": "temperate",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": "open-meteo-archive-fetch-log"
+      "years": 30
     },
     {
       "id": "pomerol",
@@ -69,7 +82,7 @@
       "grid": {
         "latitude": 45,
         "longitude": -0.25,
-        "elevation_m": 32
+        "elevation_m": 36
       },
       "period": {
         "start": "1991-01-01",
@@ -79,19 +92,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 13.9,
       "growing_season_mean_c": 17.9,
       "growing_season_months": "Apr–Oct",
       "annual_precip_mm": 743,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "growing_season_precip_mm": 424,
+      "mean_diurnal_range_c": 10.1,
+      "gdd_base10_gs": 1700,
+      "heat_days_tmax30_gs": 23.2,
+      "frost_days_tmin0_year": 23.7,
+      "winkler_region": "III",
+      "winkler_gdd_c": 1700,
+      "huglin_index": 2083,
+      "huglin_band": "temperate",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": "open-meteo-archive-fetch-log"
+      "years": 30
     },
     {
       "id": "pauillac",
@@ -108,7 +129,7 @@
       "grid": {
         "latitude": 45.25,
         "longitude": -0.75,
-        "elevation_m": 16
+        "elevation_m": 13
       },
       "period": {
         "start": "1991-01-01",
@@ -118,19 +139,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 13.9,
       "growing_season_mean_c": 17.7,
       "growing_season_months": "Apr–Oct",
       "annual_precip_mm": 738,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "growing_season_precip_mm": 410,
+      "mean_diurnal_range_c": 8.8,
+      "gdd_base10_gs": 1670,
+      "heat_days_tmax30_gs": 17.7,
+      "frost_days_tmin0_year": 14.2,
+      "winkler_region": "II",
+      "winkler_gdd_c": 1670,
+      "huglin_index": 1999,
+      "huglin_band": "temperate",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": "open-meteo-archive-fetch-log"
+      "years": 30
     },
     {
       "id": "beaune",
@@ -157,19 +186,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 12.1,
       "growing_season_mean_c": 16.7,
       "growing_season_months": "Apr–Oct",
       "annual_precip_mm": 849,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "growing_season_precip_mm": 493,
+      "mean_diurnal_range_c": 10,
+      "gdd_base10_gs": 1482,
+      "heat_days_tmax30_gs": 20,
+      "frost_days_tmin0_year": 43.8,
+      "winkler_region": "II",
+      "winkler_gdd_c": 1482,
+      "huglin_index": 1927,
+      "huglin_band": "temperate",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": "open-meteo-archive-fetch-log"
+      "years": 30
     },
     {
       "id": "reims",
@@ -196,19 +233,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 11.3,
       "growing_season_mean_c": 15.5,
       "growing_season_months": "Apr–Oct",
       "annual_precip_mm": 727,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "growing_season_precip_mm": 417,
+      "mean_diurnal_range_c": 9.3,
+      "gdd_base10_gs": 1237,
+      "heat_days_tmax30_gs": 8.9,
+      "frost_days_tmin0_year": 44.9,
+      "winkler_region": "I",
+      "winkler_gdd_c": 1237,
+      "huglin_index": 1662,
+      "huglin_band": "cool",
+      "huglin_k": 1.1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": "open-meteo-archive-fetch-log"
+      "years": 30
     },
     {
       "id": "tain",
@@ -223,9 +268,9 @@
         "lon": 4.8425
       },
       "grid": {
-        "latitude": 45.0717,
-        "longitude": 4.8425,
-        "elevation_m": null
+        "latitude": 45,
+        "longitude": 4.75,
+        "elevation_m": 121
       },
       "period": {
         "start": "1991-01-01",
@@ -235,19 +280,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 14.2,
       "growing_season_mean_c": 18.8,
       "growing_season_months": "Apr–Oct",
       "annual_precip_mm": 902,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
-      "sample_days": null,
-      "growing_season_days": null,
-      "years": 30,
-      "precip_source": "open-meteo-archive-fetch-log"
+      "growing_season_precip_mm": 566,
+      "mean_diurnal_range_c": 10,
+      "gdd_base10_gs": 1897,
+      "heat_days_tmax30_gs": 37.2,
+      "frost_days_tmin0_year": 17.6,
+      "winkler_region": "III",
+      "winkler_gdd_c": 1897,
+      "huglin_index": 2288,
+      "huglin_band": "warm temperate",
+      "huglin_k": 1,
+      "sample_days": 10958,
+      "growing_season_days": 6420,
+      "years": 30
     },
     {
       "id": "avignon",
@@ -274,19 +327,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 15.7,
       "growing_season_mean_c": 20.5,
       "growing_season_months": "Apr–Oct",
       "annual_precip_mm": 725,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "growing_season_precip_mm": 424,
+      "mean_diurnal_range_c": 10.9,
+      "gdd_base10_gs": 2249,
+      "heat_days_tmax30_gs": 62,
+      "frost_days_tmin0_year": 15.6,
+      "winkler_region": "V",
+      "winkler_gdd_c": 2249,
+      "huglin_index": 2641,
+      "huglin_band": "warm",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": "open-meteo-archive-fetch-log"
+      "years": 30
     },
     {
       "id": "tours",
@@ -313,19 +374,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 12.4,
       "growing_season_mean_c": 16.4,
       "growing_season_months": "Apr–Oct",
       "annual_precip_mm": 678,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "growing_season_precip_mm": 376,
+      "mean_diurnal_range_c": 9.7,
+      "gdd_base10_gs": 1410,
+      "heat_days_tmax30_gs": 13.4,
+      "frost_days_tmin0_year": 31.1,
+      "winkler_region": "II",
+      "winkler_gdd_c": 1410,
+      "huglin_index": 1826,
+      "huglin_band": "temperate",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": "open-meteo-archive-fetch-log"
+      "years": 30
     },
     {
       "id": "colmar",
@@ -352,19 +421,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 11.6,
       "growing_season_mean_c": 16.3,
       "growing_season_months": "Apr–Oct",
-      "annual_precip_mm": null,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "annual_precip_mm": 1021,
+      "growing_season_precip_mm": 635,
+      "mean_diurnal_range_c": 9.4,
+      "gdd_base10_gs": 1416,
+      "heat_days_tmax30_gs": 15.3,
+      "frost_days_tmin0_year": 47.8,
+      "winkler_region": "II",
+      "winkler_gdd_c": 1416,
+      "huglin_index": 1863,
+      "huglin_band": "temperate",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": null
+      "years": 30
     },
     {
       "id": "napa",
@@ -391,19 +468,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 16.5,
       "growing_season_mean_c": 20.1,
       "growing_season_months": "Apr–Oct",
-      "annual_precip_mm": null,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "annual_precip_mm": 698,
+      "growing_season_precip_mm": 111,
+      "mean_diurnal_range_c": 14.9,
+      "gdd_base10_gs": 2167,
+      "heat_days_tmax30_gs": 92.2,
+      "frost_days_tmin0_year": 2.1,
+      "winkler_region": "IV",
+      "winkler_gdd_c": 2167,
+      "huglin_index": 2683,
+      "huglin_band": "warm",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": null
+      "years": 30
     },
     {
       "id": "sonoma",
@@ -430,19 +515,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 15.9,
       "growing_season_mean_c": 19.2,
       "growing_season_months": "Apr–Oct",
-      "annual_precip_mm": null,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "annual_precip_mm": 754,
+      "growing_season_precip_mm": 123,
+      "mean_diurnal_range_c": 14,
+      "gdd_base10_gs": 1974,
+      "heat_days_tmax30_gs": 65.8,
+      "frost_days_tmin0_year": 3.7,
+      "winkler_region": "IV",
+      "winkler_gdd_c": 1974,
+      "huglin_index": 2466,
+      "huglin_band": "warm",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": null
+      "years": 30
     },
     {
       "id": "paso-robles",
@@ -459,7 +552,7 @@
       "grid": {
         "latitude": 35.75,
         "longitude": -120.75,
-        "elevation_m": 229
+        "elevation_m": 228
       },
       "period": {
         "start": "1991-01-01",
@@ -469,19 +562,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 16.4,
       "growing_season_mean_c": 19.9,
       "growing_season_months": "Apr–Oct",
-      "annual_precip_mm": null,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "annual_precip_mm": 355,
+      "growing_season_precip_mm": 52,
+      "mean_diurnal_range_c": 13.9,
+      "gdd_base10_gs": 2129,
+      "heat_days_tmax30_gs": 72.3,
+      "frost_days_tmin0_year": 4.2,
+      "winkler_region": "IV",
+      "winkler_gdd_c": 2129,
+      "huglin_index": 2595,
+      "huglin_band": "warm",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": null
+      "years": 30
     },
     {
       "id": "santa-barbara",
@@ -508,19 +609,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 18.8,
       "growing_season_mean_c": 21.5,
       "growing_season_months": "Apr–Oct",
-      "annual_precip_mm": null,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "annual_precip_mm": 405,
+      "growing_season_precip_mm": 60,
+      "mean_diurnal_range_c": 8.9,
+      "gdd_base10_gs": 2458,
+      "heat_days_tmax30_gs": 34.9,
+      "frost_days_tmin0_year": 0,
+      "winkler_region": "V",
+      "winkler_gdd_c": 2458,
+      "huglin_index": 2563,
+      "huglin_band": "warm",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": null
+      "years": 30
     },
     {
       "id": "willamette",
@@ -547,19 +656,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 12.3,
       "growing_season_mean_c": 16.1,
       "growing_season_months": "Apr–Oct",
-      "annual_precip_mm": null,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "annual_precip_mm": 1340,
+      "growing_season_precip_mm": 412,
+      "mean_diurnal_range_c": 12.5,
+      "gdd_base10_gs": 1342,
+      "heat_days_tmax30_gs": 35.8,
+      "frost_days_tmin0_year": 19.8,
+      "winkler_region": "I",
+      "winkler_gdd_c": 1342,
+      "huglin_index": 1976,
+      "huglin_band": "temperate",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": null
+      "years": 30
     },
     {
       "id": "columbia",
@@ -574,9 +691,9 @@
         "lon": -119.2845
       },
       "grid": {
-        "latitude": 46,
-        "longitude": -118.25,
-        "elevation_m": 288
+        "latitude": 46.25,
+        "longitude": -119.25,
+        "elevation_m": 118
       },
       "period": {
         "start": "1991-01-01",
@@ -586,19 +703,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
-      "annual_mean_c": 13.1,
-      "growing_season_mean_c": 18.4,
+      "annual_mean_c": 14,
+      "growing_season_mean_c": 20.4,
       "growing_season_months": "Apr–Oct",
-      "annual_precip_mm": null,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "annual_precip_mm": 228,
+      "growing_season_precip_mm": 84,
+      "mean_diurnal_range_c": 15.5,
+      "gdd_base10_gs": 2250,
+      "heat_days_tmax30_gs": 96.9,
+      "frost_days_tmin0_year": 61,
+      "winkler_region": "V",
+      "winkler_gdd_c": 2250,
+      "huglin_index": 3002,
+      "huglin_band": "hot",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": null
+      "years": 30
     },
     {
       "id": "walla-walla",
@@ -625,19 +750,27 @@
       "units": {
         "temp": "°C",
         "precip": "mm",
-        "gdd": "°C·days base 10"
+        "gdd": "°C·days base 10",
+        "huglin": "°C·days (lat-adjusted)",
+        "elevation": "m"
       },
       "annual_mean_c": 13.1,
       "growing_season_mean_c": 18.4,
       "growing_season_months": "Apr–Oct",
-      "annual_precip_mm": null,
-      "growing_season_precip_mm": null,
-      "mean_diurnal_range_c": null,
-      "gdd_base10_gs": null,
+      "annual_precip_mm": 636,
+      "growing_season_precip_mm": 236,
+      "mean_diurnal_range_c": 13.8,
+      "gdd_base10_gs": 1845,
+      "heat_days_tmax30_gs": 69.7,
+      "frost_days_tmin0_year": 40.1,
+      "winkler_region": "III",
+      "winkler_gdd_c": 1845,
+      "huglin_index": 2513,
+      "huglin_band": "warm",
+      "huglin_k": 1,
       "sample_days": 10958,
       "growing_season_days": 6420,
-      "years": 30,
-      "precip_source": null
+      "years": 30
     },
     {
       "id": "finger-lakes",
